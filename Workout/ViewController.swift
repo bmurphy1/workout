@@ -73,10 +73,11 @@ class ViewController: UIViewController {
             musicPlayer.pause()
             isPlaying = false
         } else {
-            playerTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updatePlayingTimer), userInfo: nil, repeats: true)
+            playerTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updatePlayingTimer), userInfo: nil, repeats: true)
             musicPlayer.play()
             isPlaying = true
-
+            nowPlaying = musicPlayer.nowPlayingItem
+            trackTitle.text = nowPlaying?.title
         }
     }
     
@@ -91,7 +92,8 @@ class ViewController: UIViewController {
     
     let musicPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer
     var isPlaying = false
-    var playerTimer:Timer!
+    var playerTimer: Timer!
+    var nowPlaying: MPMediaItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
