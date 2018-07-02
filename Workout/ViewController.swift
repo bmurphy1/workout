@@ -23,20 +23,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextTrackButton: UIButton!
     
     @IBOutlet weak var notesField: UITextView!
+
     @IBAction func doneText(_ sender: Any) {
         self.view.endEditing(true)
     }
-    
     @objc func updateTimer() {
         counter = counter + 0.1
-        timeLabel.text = String(format: "%.1f", counter)
+        timeLabel.text = String(format: "%02d:%02d", counter)
     }
-    @objc func updatePlayingTimer() {        
+    @objc func updatePlayingTimer() {
         let currentTime = Int(musicPlayer.currentPlaybackTime)
         let minutes = currentTime/60
         let seconds = currentTime - minutes * 60
 
-        playedTime.text = NSString(format: "%02d:%02d", minutes,seconds) as String
+        playedTime.text = String(format: "%02d:%02d", minutes,seconds)
     }
     
     var counter = 0.0
@@ -71,8 +71,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func playOrPauseMusicButton(_ sender: Any) {
+        playOrPauseTheMusic()
+    }
+    
+    func playOrPauseTheMusic() {
         if (isPlaying) {
             musicPlayer.pause()
+            playerTimer.invalidate()
             isPlaying = false
         } else {
             playerTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updatePlayingTimer), userInfo: nil, repeats: true)
@@ -82,13 +87,15 @@ class ViewController: UIViewController {
             trackTitle.text = nowPlaying?.title
         }
     }
-    
     @IBAction func nextTrack(_ sender: Any) {
         print("isPlaying: \(isPlaying)")
+        musicPlayer.skipToNextItem()
+        playerTimer.invalidate()
+        playedTime.text = "00:00"
+
         if (isPlaying) {
-            musicPlayer.skipToNextItem()
         } else {
-            print("no track playing")
+            playOrPauseTheMusic()
         }
     }
     
