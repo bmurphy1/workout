@@ -22,6 +22,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var playOrPauseMusic: UIButton!
     @IBOutlet weak var nextTrackButton: UIButton!
     
+    @IBOutlet weak var notesField: UITextView!
+    @IBAction func doneText(_ sender: Any) {
+        self.view.endEditing(true)
+    }
+    
     @objc func updateTimer() {
         counter = counter + 0.1
         timeLabel.text = String(format: "%.1f", counter)
