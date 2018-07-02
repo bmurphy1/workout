@@ -31,15 +31,12 @@ class ViewController: UIViewController {
         counter = counter + 0.1
         timeLabel.text = String(format: "%.1f", counter)
     }
-    @objc func updatePlayingTimer() {
-        counter = counter + 0.1
-        playedTime.text = String(format: "%.1f", counter)
-        
-//        var currentTime = Int(audioPlayer.currentTime)
-//        var minutes = currentTime/60
-//        var seconds = currentTime - minutes * 60
-//
-//        playedTime.text = NSString(format: "%02d:%02d", minutes,seconds) as String
+    @objc func updatePlayingTimer() {        
+        let currentTime = Int(musicPlayer.currentPlaybackTime)
+        let minutes = currentTime/60
+        let seconds = currentTime - minutes * 60
+
+        playedTime.text = NSString(format: "%02d:%02d", minutes,seconds) as String
     }
     
     var counter = 0.0
@@ -95,7 +92,7 @@ class ViewController: UIViewController {
         }
     }
     
-    let musicPlayer = MPMusicPlayerApplicationController.applicationQueuePlayer
+    let musicPlayer = MPMusicPlayerApplicationController.systemMusicPlayer
     var isPlaying = false
     var playerTimer: Timer!
     var nowPlaying: MPMediaItem?
