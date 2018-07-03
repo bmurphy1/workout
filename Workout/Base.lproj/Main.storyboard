@@ -18,18 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yh6-Xu-TeR">
-                                <rect key="frame" x="107" y="566" width="161" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="yh6-Xu-TeR">
+                                <rect key="frame" x="59" y="583" width="243.5" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gt2-mU-199">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gt2-mU-199">
+                                        <rect key="frame" x="0.0" y="0.0" width="71.5" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rRC-a9-BKX">
-                                        <rect key="frame" x="46" y="0.0" width="34" height="30"/>
+                                        <rect key="frame" x="90.5" y="0.0" width="34" height="30"/>
                                         <accessibility key="accessibilityConfiguration" label="Start Button"/>
                                         <state key="normal" title="Start"/>
                                         <connections>
@@ -37,14 +37,14 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DoH-aB-zk7">
-                                        <rect key="frame" x="80" y="0.0" width="42" height="30"/>
+                                        <rect key="frame" x="143.5" y="0.0" width="42" height="30"/>
                                         <state key="normal" title="Pause"/>
                                         <connections>
                                             <action selector="pauseTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lEQ-nv-bku"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4A-Wi-LGq">
-                                        <rect key="frame" x="122" y="0.0" width="39" height="30"/>
+                                        <rect key="frame" x="204.5" y="0.0" width="39" height="30"/>
                                         <state key="normal" title="Reset"/>
                                         <connections>
                                             <action selector="resetTImer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hYY-mu-aqx"/>
@@ -52,29 +52,6 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAP-5l-J5g">
-                                <rect key="frame" x="58" y="467" width="56" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyZ-0C-NDH">
-                                <rect key="frame" x="168" y="467" width="74" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play/Pause"/>
-                                <connections>
-                                    <action selector="playOrPauseMusicButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OkK-bP-LJC"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeg-pV-82I">
-                                <rect key="frame" x="250" y="467" width="67" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Next"/>
-                                <connections>
-                                    <action selector="nextTrack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eKV-DT-4qS"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="not playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyS-Ig-LVI">
                                 <rect key="frame" x="67" y="505" width="227" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -97,6 +74,39 @@
                                     <action selector="doneText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="x6n-xG-hcC"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="fillEqually" spacing="27" translatesAutoresizingMaskIntoConstraints="NO" id="vS0-jf-jJt">
+                                <rect key="frame" x="48" y="467" width="265" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAP-5l-J5g">
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NyZ-0C-NDH">
+                                        <rect key="frame" x="73" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Play"/>
+                                        <connections>
+                                            <action selector="playOrPauseMusicButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OkK-bP-LJC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W8O-Hz-VJd">
+                                        <rect key="frame" x="146" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Pause"/>
+                                        <connections>
+                                            <action selector="pauseTrack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4zv-gH-Xv1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeg-pV-82I">
+                                        <rect key="frame" x="219" y="0.0" width="46" height="30"/>
+                                        <state key="normal" title="Next"/>
+                                        <connections>
+                                            <action selector="nextTrack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eKV-DT-4qS"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -105,6 +115,7 @@
                         <outlet property="nextTrackButton" destination="yeg-pV-82I" id="Xfq-nX-hl1"/>
                         <outlet property="notesField" destination="xqf-95-9aa" id="uRC-ky-YBJ"/>
                         <outlet property="pauseButton" destination="DoH-aB-zk7" id="Zjb-Dp-4P6"/>
+                        <outlet property="pauseTrackButton" destination="W8O-Hz-VJd" id="06z-ia-BeF"/>
                         <outlet property="playOrPauseMusic" destination="NyZ-0C-NDH" id="sFy-xc-ogT"/>
                         <outlet property="playedTime" destination="QAP-5l-J5g" id="FBG-g1-UmO"/>
                         <outlet property="resetButton" destination="P4A-Wi-LGq" id="ySQ-8w-Ddy"/>

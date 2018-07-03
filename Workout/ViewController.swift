@@ -19,24 +19,27 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var playedTime: UILabel!
     @IBOutlet weak var trackTitle: UILabel!
+    
+    @IBOutlet weak var pauseTrackButton: UIButton!
     @IBOutlet weak var playOrPauseMusic: UIButton!
     @IBOutlet weak var nextTrackButton: UIButton!
     
     @IBOutlet weak var notesField: UITextView!
 
+    // Notes functionality
+    // *******************
     @IBAction func doneText(_ sender: Any) {
         self.view.endEditing(true)
     }
+
+    // Stopwatch functionality
+    // ***********************
     @objc func updateTimer() {
         counter = counter + 0.1
-        timeLabel.text = String(format: "%02d:%02d", counter)
-    }
-    @objc func updatePlayingTimer() {
-        let currentTime = Int(musicPlayer.currentPlaybackTime)
-        let minutes = currentTime/60
-        let seconds = currentTime - minutes * 60
-
-        playedTime.text = String(format: "%02d:%02d", minutes,seconds)
+        let minutes = Int(counter / 60)
+        let seconds = Int(counter / 1) % 60
+        let milliseconds = Int(counter.truncatingRemainder(dividingBy: 1) * 10)
+        timeLabel.text = String(format: "%02d:%02d:%02d", minutes, seconds, milliseconds)
     }
     
     var counter = 0.0
@@ -70,35 +73,62 @@ class ViewController: UIViewController {
         timeLabel.text = String(counter)
     }
     
-    @IBAction func playOrPauseMusicButton(_ sender: Any) {
-        playOrPauseTheMusic()
+    // Music player functionality
+    // **************************
+    @objc func updatePlayingTimer() {
+        let currentTime = Int(musicPlayer.currentPlaybackTime)
+        let minutes = currentTime/60
+        let seconds = currentTime - minutes * 60
+        
+        playedTime.text = String(format: "%02d:%02d", minutes, seconds)
     }
     
-    func playOrPauseTheMusic() {
-        if (isPlaying) {
+    // This is really just a Play button, too lazy to rename atm
+    @IBAction func playOrPauseMusicButton(_ sender: Any) {
+        playerTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updatePlayingTimer), userInfo: nil, repeats: true)
+        musicPlayer.play()
+        isPlaying = true
+        nowPlaying = musicPlayer.nowPlayingItem
+        trackTitle.text = nowPlaying?.title
+        
+        playOrPauseMusic.isEnabled = false
+        pauseTrackButton.isEnabled = true
+    }
+    
+    @IBAction func pauseTrack(_ sender: Any) {
+        if isPlaying {
             musicPlayer.pause()
             playerTimer.invalidate()
             isPlaying = false
-        } else {
-            playerTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updatePlayingTimer), userInfo: nil, repeats: true)
-            musicPlayer.play()
-            isPlaying = true
-            nowPlaying = musicPlayer.nowPlayingItem
-            trackTitle.text = nowPlaying?.title
+
+            playOrPauseMusic.isEnabled = true
+            pauseTrackButton.isEnabled = false
         }
     }
+    
     @IBAction func nextTrack(_ sender: Any) {
         print("isPlaying: \(isPlaying)")
         musicPlayer.skipToNextItem()
+        nowPlaying = musicPlayer.nowPlayingItem
+        trackTitle.text = songTitleArtistFormatted(track: nowPlaying)
+        
         playerTimer.invalidate()
         playedTime.text = "00:00"
 
         if (isPlaying) {
-        } else {
-            playOrPauseTheMusic()
+            playerTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updatePlayingTimer), userInfo: nil, repeats: true)
         }
     }
     
+    func songTitleArtistFormatted(track: MPMediaItem?) -> String? {
+        if track != nil {
+            let title = track!.title
+            let artist = track!.artist
+            return "\(title) - \(artist)"
+        } else {
+            return "not playing"
+        }
+    }
     let musicPlayer = MPMusicPlayerApplicationController.systemMusicPlayer
     var isPlaying = false
     var playerTimer: Timer!
@@ -117,7 +147,5 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
 
